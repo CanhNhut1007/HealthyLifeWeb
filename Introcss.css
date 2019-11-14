@@ -1,0 +1,167 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 7, 2019, 2:43:36 PM
+    Author     : Quyen
+*/
+
+div{
+    display: block;
+}
+a, body, div, html{
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    line-height: 1.4em;
+    margin: 0;
+    padding: 0;
+}
+
+#VideoPlaying{
+    left: 0px;
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#VideoPlaying > video{
+    object-fit: cover;
+    width: 100%;
+}
+#RightHandModel{
+    position: absolute;
+    right: 0px;
+    top: 0;
+    bottom: 0px;
+    width: 25%;
+    height: 100%;
+    min-width: 375px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: white;
+}
+
+#content{
+    max-width: 1024px;
+    width: 100%;
+    margin-left: auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    padding-left: 28px;
+    padding-top: 10vh;
+    padding-right: 28px;
+    padding-bottom: 0px;
+}
+#logo{
+    float: inherit;
+    margin-top:0px;
+    margin-bottom: 40px;
+    margin-right: 0px;
+    margin-left: 0px;
+    height: 160px;
+    width: 300px;
+    background-image: url('picture/Healthylife_2.png')
+}
+#Carousel{
+    
+    height: 143px;
+    width: 319px;
+    margin: 0px;
+    
+    padding: 0px;
+    background-color: grey;
+}
+#SignupOptions{
+    height: 211px;
+    width: 319px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    
+}
+a{
+    cursor: pointer;
+    text-decoration: none;
+    color: blue;
+}
+a.btn{
+    border-radius: 22px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    height: 44px;
+    line-height: 44px;
+    padding-top: 0px;
+    padding-right: 24px;
+    padding-bottom:0px;
+    padding-left: 24px;
+    margin-top: 80px;
+    margin-right: 0px;
+    margin-bottom: 16px;
+    margin-left: 0px;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+}
+a.btn.color{
+    background: rgb(54, 146, 231);
+    color: white;
+}
+a.btn.depth{
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+}
+#SignupOptions > #alreadyMember {
+    margin-top: 25px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+/* #SignupOptions > #liner{
+    height: 19px;
+    line-height: 0;
+    padding: 20px 0;
+    max-width: 280px;
+    margin: 0 auto;
+    text-align: center;
+    white-space: nowrap;
+}
+#SignupOptions > #liner >.line{
+    width: 45%;
+    height: 2px;
+    border: 1px solid grey;
+    opacity: .5;
+    display: inline-block;
+    vertical-align: middle;
+}
+#SignupOptions > #liner > .or{
+    display: inline-block;
+    margin: -10px 6px 0;
+    color: #868e96;
+    font-size: 14px;
+    line-height: 19px;
+    height: 19px;
+} */

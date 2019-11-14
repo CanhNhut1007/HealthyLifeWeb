@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Signup</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="signupcss.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="js/Signup.js"></script>
+    </head>
+    <body>
+        <div id="SignupPage">
+            <div id="VideoPlaying">
+                <video width="100%" height="100%" autoplay muted loop playsinline>
+                    <source src="video/memberWelcomeVideoDesktop.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="RightHandModel">
+                <div id="content">
+                    <div id="logo">
+                    </div>
+                    
+                    <div class="emailInput">
+                        <div class="textInput">
+                            <div class="label">Email</div>
+                            <input type="email" name="email" pattern=".+@gmail.com" value="">
+                        </div>
+                    </div>
+                    <div class="passwordInput">
+                        <div class="textInput">
+                            <div class="label">Password</div>
+                            <input type="password" name="password" value="">
+                        </div>
+                    </div>
+                    <div class="confirmpassInput">
+                        <div class="textInput">
+                            <div class="label">Confirm Password</div>
+                            <input type="password" name="confirmpassword" value="">
+                        </div>
+                    </div>                          
+                    <div id="divSignup">
+                        <div id="btnSignup">
+                            <a id="Signup" class="btn color depth">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="noidung"></div>
+    </body>
+</html>

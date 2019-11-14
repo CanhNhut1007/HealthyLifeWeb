@@ -1,0 +1,59 @@
+div{
+    display: block;
+}
+a, body, div, html{
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    line-height: 1.4em;
+    margin: 0;
+    padding: 0;
+}
+#header{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+#bar{
+    background-color: #09313a;
+    height: 64px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+#contentBar{
+    margin: 0 auto;
+    max-width: 1024px;
+    padding-top: 0px;
+    padding-right: 50px;
+    padding-bottom: 0px;
+    padding-left: 50px;
+    background-color: white;
+}
+#bar>#contentBar>#options{
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+#bar>#contentBar>#options>nav>ul>li>a{
+    display: block;
+    height: 64px;
+    line-height: 64px;
+}
