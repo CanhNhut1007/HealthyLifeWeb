@@ -1,0 +1,118 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    background-color: #000000;
+}
+
+.wrap {
+    width: 100%;
+    float: left;
+    height: 472;
+}
+
+.header {
+    width: 1600px;
+    float: left;
+    background-color: #ffffff;
+    height: 64px;
+
+}
+
+#id_header {
+    border-bottom-style: solid;
+    border-bottom-color: #e6e6e6;
+    border-bottom-width: 1px;
+}
+
+.container {
+    width: 1024px;
+    float: center;
+    margin: 0 auto;
+    height: 64px;
+}
+
+.logoContainer {
+    width: 300px;
+    float: left;
+    background-color: #ffffff;
+    height: 64px;
+    cursor: pointer;
+    padding: 6px 0;
+    border-bottom-style: solid;
+    border-bottom-color: #e6e6e6;
+    border-bottom-width: 1px;
+}
+
+.nav_menu {
+    width: 692px;
+    float: left;
+    background-color: #ffffff;
+    height: 64px;
+    margin-left: 0px;
+    text-align: right;
+    border-bottom-style: solid;
+    border-bottom-color: #e6e6e6;
+    border-bottom-width: 1px;
+}
+
+.nav_menu ul {
+    list-style-type: none;
+}
+
+.nav_menu li.main_list {
+    display: inline-block;
+}
+
+ul.ul_menu>li>div.menu_link {
+    cursor: pointer;
+    height: 64px;
+    padding: 18px 16px;
+    text-align: center;   
+}
+
+.menu_link>ul.dropdown-menu>li.sub_list>a.a_sub_list {
+    color: #6e6e6e;
+    text-decoration: none;
+}
+
+.menu_link>ul.dropdown-menu>li.sub_list>a.a_sub_list:hover {
+    color: #97cefc;
+}
+
+.avatar_member {
+    height: 24px;
+    width: 24px;
+}
+
+.avatar {
+    height: 24px;
+    width: 24px;
+    background-size: cover;
+    background-image: url(&quot;https://edc2.healthtap.com/ht-staging/pnx/avatars/defaults/nc.medium.2x.png&quot;);
+}
+
+.account_link1 {
+    padding-top: 18px;
+}
+
+nav {
+    width: 692px;
+    float: left;
+    background-color: #ffffff;
+    height: 64px;
+    border-bottom-style: solid;
+    border-bottom-color: #e6e6e6;
+    border-bottom-width: 1px;
+}
+
+.main {
+    width: 1600px;
+    height: 408px;
+    float: left;
+    background-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-color: #e6e6e6;
+    border-bottom-width: 1px;
+}
+
