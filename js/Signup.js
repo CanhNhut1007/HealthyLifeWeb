@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $("#Signup").click(function(){
         
-        $('#SignupPage').html('Login.html');
-        alert("Test");
+        window.location.href="Login.html";
+        
     });
+        
 });

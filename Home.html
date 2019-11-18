@@ -3,35 +3,66 @@
         <title>Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="Home.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="homecss.css">
     </head>
     <body>
-        <div id="HomePage">
-            <div id="header">
-                <div id="bar">
-                    <div id="contentBar">
-                        <div id="logo">
-
+        <div class="HomePage">
+            <div class="header">
+                <div class="bar">
+                    <div class="contentBar">
+                        <div class="logo">
+                            <img src="picture/health_life.png" alt="logo">
                         </div>
-                        <div id="options">
+                        <div class="options">
                             <nav>
                                 <ul>
-                                    <li>
-                                        <a role="button" href="">Group</a>
+                                    <li class="nav">
+                                        <a id="a-bar" role="button" tabindex="0" href="">Group</a>
                                     </li>
-                                    <li>
-                                        <a role="button" href="">Individuals</a>
+                                    <li class="nav">
+                                        <a id="a-bar" role="button" href="">Individuals</a>
                                     </li>
-                                    <li>
+                                    <li class="subnav">
+                                        <div class="div-subnav">
+                                            <a id="a-bar" role="button" tabindex="0" href="#">Sign up</a>
+                                            <div class="subnav-content">
+                                                <ul>
+                                                    <li>
+                                                        <a id="a-bar" role="button" tabindex="0" href="Intro.html">For Individuals</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="a-bar" role="button" tabindex="0" href="Intro.html">For Doctor</a>
+                                                    </li>
+                                                </ul>    
+                                            </div>
+                                        </div>
+                                        <div class="div-subnav">
+                                            <a id="a-bar" role="button" tabindex="0" href="#">Log in</a>
+                                            <div class="subnav-content">
+                                                <ul>
+                                                    <li>
+                                                        <a id="a-bar" role="button" tabindex="0" href="Login.html">Login For Individuals</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="a-bar" role="button" tabindex="0" href="Login.html">For Doctor</a>
+                                                    </li>
+                                                </ul>    
+                                            </div>
+                                        </div>
                                         
                                     </li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                </div>            
+                </div>
             </div>
-            <div id="content">
+            <div class="container">
+                <div class="picture">
+                    <img id="picturebg" src="picture/home_background.jpg">
+                </div>
             </div>
         </div>
     </body>
