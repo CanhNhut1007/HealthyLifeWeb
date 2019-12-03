@@ -1,13 +1,14 @@
 <html>
     <head>
-        <title>ForgotPassword</title>
+        <title>Verify</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="forgotpasswordcss.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="verifycss.css">
+        <script src="js/Verify.js"></script>
     </head>
     <body>
-        <div class="ForgotPasswordPage">
+        <div class="VerifyPage">
             <div class="VideoPlaying">
                 <video width="100%" height="100%" autoplay muted loop playsinline>
                     <source src="video/memberWelcomeVideoDesktop.mp4" type="video/mp4">
@@ -18,18 +19,19 @@
                     <div class="logo">
                     </div>
                     <div class="tenor">
-                        <h2><strong>Forgot your Password? </strong></h2>
-                        <p>Please enter your email address, we will help you recover your password</p>
+                        <h2><strong>Verify your account </strong></h2>
+                        <p>Your account has been made.</p>
+                        <p>An email has been sent to your mail. Please enter your code in this email message to verify your account and complete registration</p>
                     </div>
-                    <div class="emailInput">
+                    <div class="codeInput">
                         <div class="textInput">
-                            <div class="label">Email</div>
-                            <input type="email" name="email" pattern=".+@gmail.com" value="">
+                            <div class="label">Code</div>
+                            <input  maxlength="6" type="text" name="code" value="">
                         </div>
                     </div>
-                    <div class="divSend">
-                        <div id="btnSend">
-                            <a class="btn color depth">Send</a>
+                    <div class="divVerify">
+                        <div id="btnverify">
+                            <a id="Verify" class="btn color depth">Verify</a>
                         </div>
                     </div>
                 </div>

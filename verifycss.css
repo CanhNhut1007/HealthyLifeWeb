@@ -28,23 +28,23 @@ a, body, div, html{
     position: absolute;
     width: 75%;
     height: 100%;
-    top: 0;
-    bottom: 0;
+    top: 0px;
+    bottom: 0px;
     overflow: hidden;
     overflow-x: hidden;
     overflow-y: hidden;
 }
-.VideoPlaying >video{
+.VideoPlaying > video{
     object-fit: cover;
     width: 100%;
 }
 .RightHandModel{
     position: absolute;
+    right: 0px;
+    top: 0;
+    bottom: 0px;
     width: 25%;
     height: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0px;
     min-width: 375px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -53,16 +53,20 @@ a, body, div, html{
 .content{
     max-width: 1024px;
     width: 100%;
-    margin: 0px auto;
+    margin-left: auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    padding-left: 28px;
     padding-top: 10vh;
     padding-right: 28px;
     padding-bottom: 0px;
-    padding-left: 28px;
 }
-.content .logo{
-    margin-top: 0px;
+.logo{
+    float: inherit;
+    margin-top:0px;
+    margin-bottom: 30px;
     margin-right: 0px;
-    margin-bottom: 40px;
     margin-left: 0px;
     height: 160px;
     width: 300px;
@@ -70,7 +74,7 @@ a, body, div, html{
 }
 .content .tenor{
     margin: 0px 0px 40px 0px;
-    height: 100px;
+    height: 150px;
     width: 300px;
     text-align: center;
     line-height: 20px;
@@ -134,7 +138,7 @@ a.btn.color{
 a.btn.depth{
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
 }
-.divSend{
+.divVerify{
     height: 120px;
     width: 319px;
     margin: 0px;

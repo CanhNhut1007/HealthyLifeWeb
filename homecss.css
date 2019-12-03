@@ -49,9 +49,13 @@ a, body, div, html{
     /* background-color: white; */
 }
 ul{
+    list-style: none;
     margin-block-start: 0px;
     margin-block-end: 0px;
     padding-inline-start: 0px;
+}
+li{
+    display: list-item;
 }
 .header .bar .contentBar .logo{
     width: 152px;
@@ -75,7 +79,7 @@ ul{
 .bar .contentBar .options>nav>ul>li.nav:hover,li.subnav .div-subnav:hover{
     background-color: #0b778f;
 }
-.bar .contentBar .options>nav>ul>li>a, .subnav .div-subnav>a, .subnav .div-subnav>ul>li>a{
+.bar .contentBar .options>nav>ul>li>a, .subnav .div-subnav>a{
     display: inline-block;
     vertical-align: middle;
     height: 64px;
@@ -108,14 +112,23 @@ ul{
     right: 0;
     width: 24px;
 } */
+.bar .contentBar .options>nav>ul>li.subnav .div-subnav .subnav-content.divSignup{
+    right: 92.02px;
+}
+.bar .contentBar .options>nav>ul>li.subnav .div-subnav .subnav-content.divLogin{
+    right: 0px;
+}
 .bar .contentBar .options>nav>ul>li.subnav .div-subnav .subnav-content{
     background: #064f5f;
     display: none;
     position: absolute;
     top: 64px;
-    right: 0;
     width: 200px;
     line-height: 60px;
+}
+.bar .contentBar .options>nav>ul>li.subnav .div-subnav .subnav-content ul li a{
+    display: block;
+    padding: 24px;
 }
 .bar .contentBar .options>nav>ul>li.subnav .div-subnav .subnav-content>ul>li>a:hover{
     background-color: #0a6377;
@@ -129,13 +142,31 @@ ul{
     color: white;
     text-decoration: none;
 }
+
+
+
 .container{
     position: relative;
     width: 100%;
 }
-.container .picture{
+.container .headcontainer .picture{
+    position: relative;
     width: 100%;
 }
 #picturebg{
-    width: 100%`;
+    width: 100%;
+}
+h2{
+    font-size: 100px;
+    color: white;
+}
+.container .headcontainer .divtext{
+    width: 70%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.container .headcontainer .text{
+    text-align: center;
+    top: 50px;
 }
