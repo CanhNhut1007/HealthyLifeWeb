@@ -42,7 +42,7 @@
     </div>
     <div class="content_div">
         <div id="content_home">
-            <div class="div_search"><small class="form-text text-muted name_table" id="text_name_table">Health Record</small><a class="text-right link_add_edit" href="#">Add</a></div>
+            <div class="div_search"><small class="form-text text-muted name_table" id="text_name_table">Health Record</small><a class="text-right link_add_edit" href="{{route('doctor-addhealthrecord', [$accountid, $accountpatientid])}}">Add</a></div>
             <div id="table_last_result">
                 <div class="table-responsive">
                     <table class="table">

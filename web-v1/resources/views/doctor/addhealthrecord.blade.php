@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Health Record Detail</title>
+    <title>Add Health Record</title>
     <link rel="stylesheet" href="{{URL::asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('fonts/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/styles.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
 </head>
 
 <body>
@@ -46,6 +45,7 @@
                 <div class="col-4" id="column_name">
                     <p class="text_name">Health Record ID<br /></p>
                     <p class="text_name">Date<br /></p>
+                    <p class="text_name">Patient ID<br /></p>
                     <p class="text_name">Doctor<br /></p>
                     <p class="text_name">Description<br /></p>
                     <p class="text_name">Diagnosis<br /></p>
@@ -54,14 +54,15 @@
                     <p class="text_name">TotalFee<br /></p>
                 </div>
                 <div class="col" id="column_detail">
-                    <p style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->HealthRecordID}}</p>
-                    <p style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->HealthRecorDateTime}}</p>
-                    <p style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->EmployeeID}}</p>
-                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Description}}"/><br>
-                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Diagnosis}}"/><br>
-                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Result}}"/><br>
-                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Notes}}"/><br>
-                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->TotalFee}}"/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <p style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$patientid}}</p>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
+                    <input type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value=""/><br>
                 </div>
             </div>
             <div>

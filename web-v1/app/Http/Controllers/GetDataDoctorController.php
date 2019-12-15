@@ -78,4 +78,11 @@ class GetDataDoctorController extends Controller
             return view('doctor/recorddetail', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail]);
         }
     }
+
+    function AddHealthRecord($accountid, $accountpatientid)
+    {
+        $patientname = PatientModel::where('AccountID', $accountpatientid)->value('PatientName');
+        $patientid = PatientModel::where('AccountID', $accountpatientid)->value('PatientID');
+        return view('doctor/addhealthrecord', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'patientid'=>$patientid]);
+    }
 }

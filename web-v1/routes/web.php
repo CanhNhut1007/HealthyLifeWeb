@@ -72,3 +72,5 @@ Route::get('/doctor-home/{accountid}', 'GetDataDoctorController@DoctorSearch')->
 
 Route::any('/doctor-home/{accountid}', 'GetDataDoctorController@SearchPatient')->name('doctor-home1');
 
+Route::get('/doctor-addhealthrecord/{accountid}/{accountpatientid}', 'GetDataDoctorController@AddHealthRecord')->name('doctor-addhealthrecord');
+
