@@ -62,26 +62,36 @@
                                     <p class="para_current_mail">Curent login email<br></p>
                                     <p id="text_current_mai_login" class="para_current_mail text_mail_login" placeholder="Login Email">{{$accountemail}}</p>
                                 </div>
-                                <div class="div_insurance_name">
-                                    <p class="text_setting">Enter your new login email<br></p><input class="form-control-sm input_setting" type="text" placeholder="Login Email" id="id_loginemail"></div>
-                                <div class="div_info_name">
-                                    <p class="text_setting">Enter password to change your login email<br></p><input class="form-control-sm input_setting" type="password" placeholder="Password" id="id_emailpass"></div>
-                                <div class="button_save_cancel"><button class="btn btn-primary btn_save" type="button">Save</button><button class="btn btn-primary btn_cancel" type="button" id="btn_cancel1">Cancel</button></div>
+                                <form action="#" method="put">
+                                    <div class="div_insurance_name">
+                                        <p class="text_setting">Enter your new login email<br></p><input class="form-control-sm input_setting" type="text" placeholder="Login Email" id="id_loginemail"></div>
+                                    <div class="div_info_name">
+                                        <p class="text_setting">Enter password to change your login email<br></p><input class="form-control-sm input_setting" type="password" placeholder="Password" id="id_emailpass"></div>
+                                    <div class="button_save_cancel">
+                                        <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                                        <button class="btn btn-primary btn_cancel" type="button" id="btn_cancel1">Cancel</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="tab-2">
                         <div>
                             <p id="text_name_insurance">Your Password</p>
-                            <div>
-                                <div class="div_insurance_name">
-                                    <p class="para_current_mail">Enter current password<br></p><input class="form-control-sm input_setting" type="password" placeholder="Current Password" id="id_currentpass"></div>
-                                <div class="div_insurance_name">
-                                    <p class="text_setting">Enter new password<br></p><input class="form-control-sm input_setting" type="password" placeholder="New Password" id="id_newpass"></div>
-                                <div class="div_info_name">
-                                    <p class="text_setting">Confirm new password<br></p><input class="form-control-sm input_setting" type="password" placeholder="Confirm Password" id="id_confirmpass"></div>
-                                <div class="button_save_cancel"><button class="btn btn-primary btn_save" type="button">Save</button><button class="btn btn-primary btn_cancel" type="button" id="btn_cancel2">Cancel</button></div>
-                            </div>
+                            <form action="#" method="put">
+                                <div>
+                                    <div class="div_insurance_name">
+                                        <p class="para_current_mail">Enter current password<br></p><input class="form-control-sm input_setting" type="password" placeholder="Current Password" id="id_currentpass"></div>
+                                    <div class="div_insurance_name">
+                                        <p class="text_setting">Enter new password<br></p><input class="form-control-sm input_setting" type="password" placeholder="New Password" id="id_newpass"></div>
+                                    <div class="div_info_name">
+                                        <p class="text_setting">Confirm new password<br></p><input class="form-control-sm input_setting" type="password" placeholder="Confirm Password" id="id_confirmpass"></div>
+                                    <div class="button_save_cancel">
+                                        <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                                        <button class="btn btn-primary btn_cancel" type="button" id="btn_cancel2">Cancel</button>
+                                    </div>                                    
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="tab-3">

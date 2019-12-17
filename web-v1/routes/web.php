@@ -15,27 +15,6 @@ Route::get('/', function () {
     return view('doctor/a');
 })->name('test');
 
-Route::get('/record-1', function () {
-    return view('welcome');
-})->name('record-1');
-
-Route::get('/patient-account', function () {
-    return view('patient/account');
-});
-
-Route::get('getdata', function(){
-    //$data = DB::table('healthrecord')->first();
-    return view('patient/home', ['healthrecordid'=>$data]);
-   
-});
-
-Route::get('/patient-home/{accountid}', function($accountid){
-    $name = DB::table('patient')->where('AccountID', $accountid)->value('PatientName');
-    $patientid = DB::table('patient')->where('AccountID', $accountid)->value('PatientID');
-    $data = DB::table('healthrecord')->where('PatientID', $patientid)->first();
-    return view('patient/home', ['patientname'=>$name,'healthrecord'=>$data, 'accountid'=>$accountid]);
-})->name('patient-home');
-
 Route::get('/patient-account/{accountid}', 'GetDataPatientController@PatientAccount')->name('patient-account');
 
 Route::get('/patient-profile/{accountid}', 'GetDataPatientController@PatientProfile')->name('patient-profile');
@@ -74,3 +53,6 @@ Route::any('/doctor-home/{accountid}', 'GetDataDoctorController@SearchPatient')-
 
 Route::get('/doctor-addhealthrecord/{accountid}/{accountpatientid}', 'GetDataDoctorController@AddHealthRecord')->name('doctor-addhealthrecord');
 
+Route::post('/doctor-patientrecord/{accountid}/{accountpatientid}', 'GetDataDoctorController@SaveHealthRecord')->name('doctor-patientrecord1');
+
+Route::any('/doctor-profile-update-about/{accountid}', 'GetDataDoctorController@UpdateProfileAboutDoctor')->name('doctor-profile1');

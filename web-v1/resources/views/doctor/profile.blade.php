@@ -42,50 +42,62 @@
                     <div class="tab-pane active" role="tabpanel" id="tab-1">
                         <div>
                             <p id="text_name_about">About</p>
-                            <div class="div_about">
-                                <div class="div_info_name div_name">
-                                    <p class="text_about">Name</p><input class="form-control-sm input_about input_name_card" type="text" placeholder="Name" value="{{$employee->EmployeeName}}"></div>
-                                <div class="div_info_name div_name">
-                                    <p class="text_about">Identify Card</p><input class="form-control-sm input_about input_name_card" type="text" placeholder="Identify Card" value="{{$employee->IdentifyCard}}"></div>
-                                <div class="div_info_name div_name">
-                                    <p class="text_about">Date of Birth</p><input class="form-control-sm input_about input_name_card" type="text" placeholder="Year/Month/Year" value="{{$employee->Age}}"></div>
-                                <div>
-                                    <p class="div_info_name text_about">Gender</p><input class="form-control-sm input_about input_name_card" type="text" placeholder="Gender" value="{{$employee->Gender}}"></div>
-                                <div>
-                                    <p class="div_info_name text_about">Phone Number</p><input class="form-control-sm input_about input_name_card" type="text" placeholder="Phone Number" value="{{$employee->PhoneNumber}}"></div>
-                            </div><button class="btn btn-primary" type="button">Save</button></div>
+                            <form action="{{route('doctor-profile1', $accountid)}}" method="PUT">
+                                <div class="div_about">
+                                    <div class="div_info_name div_name">
+                                        <p class="text_about">Name</p><input name="employeename" class="form-control-sm input_about input_name_card" type="text" placeholder="Name" value="{{$employee->EmployeeName}}"></div>
+                                    <div class="div_info_name div_name">
+                                        <p class="text_about">Identify Card</p><input name="identifycard" class="form-control-sm input_about input_name_card" type="text" placeholder="Identify Card" value="{{$employee->IdentifyCard}}"></div>
+                                    <div class="div_info_name div_name">
+                                        <p class="text_about">Date of Birth</p><input name="dateofbirth" class="form-control-sm input_about input_name_card" type="text" placeholder="Year/Month/Year" value="{{$employee->Age}}"></div>
+                                    <div>
+                                        <p class="div_info_name text_about">Gender</p><input name="gender" class="form-control-sm input_about input_name_card" type="text" placeholder="Gender" value="{{$employee->Gender}}"></div>
+                                    <div>
+                                        <p class="div_info_name text_about">Phone Number</p><input name="phonenumber" class="form-control-sm input_about input_name_card" type="text" placeholder="Phone Number" value="{{$employee->PhoneNumber}}"></div>
+                                </div>
+                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                            </form>
+                        </div>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="tab-2">
                         <div>
                             <p id="text_name_contact">Educational Background</p>
-                            <div>
-                                <div class="div_info_name">
-                                    <p class="text_contact">Degree</p><input class="form-control-sm input_contact" type="text" placeholder="Degree" value="{{$employee->Degree}}"></div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">Speciality</p>
-                                    <div><input class="form-control-sm input_contact" type="text" placeholder="Speciality" value="{{$employee->Speciality}}"></div>
+                            <form action="" method="put">
+                                <div>
+                                    <div class="div_info_name">
+                                        <p class="text_contact">Degree</p><input name="" class="form-control-sm input_contact" type="text" placeholder="Degree" value="{{$employee->Degree}}"></div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">Speciality</p>
+                                        <div><input name="" class="form-control-sm input_contact" type="text" placeholder="Speciality" value="{{$employee->Speciality}}"></div>
+                                    </div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">Medical School<br></p>
+                                        <div><input name="" class="form-control-sm input_contact" type="text" placeholder="Medical School" value="{{$employee->MedicalSchool}}"></div>
+                                    </div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">Year of Degree<br></p>
+                                        <div><input name="" class="form-control-sm input_contact" type="text" placeholder="Year of Degree" value="{{$employee->YearOfDegree}}"></div>
+                                    </div>
                                 </div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">Medical School<br></p>
-                                    <div><input class="form-control-sm input_contact" type="text" placeholder="Medical School" value="{{$employee->MedicalSchool}}"></div>
-                                </div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">Year of Degree<br></p>
-                                    <div><input class="form-control-sm input_contact" type="text" placeholder="Year of Degree" value="{{$employee->YearOfDegree}}"></div>
-                                </div>
-                            </div>
-                        </div><button class="btn btn-primary" type="button">Save</button></div>
+                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="tab-pane" role="tabpanel" id="tab-3">
                         <div>
                             <p id="text_name_insurance">Insurace</p>
-                            <div>
-                                <div class="div_insurance_name">
-                                    <p class="text_insurance">License Number</p><input class="form-control-sm input_insurance" type="text" placeholder="License Number" value="{{$employee->LicenseNumber}}"></div>
-                                <div class="div_info_name">
-                                    <p class="text_about">License Contry</p><input class="form-control-sm input_insurance" type="text" placeholder="License Country" value="{{$employee->LicenseCountry}}"></div>
-                                <div class="div_info_name">
-                                    <p class="text_about">License EXP</p><input class="form-control-sm input_insurance" type="text" placeholder="Year/Month/Day" value="{{$employee->LicenseEXP}}"></div>
-                            </div><button class="btn btn-primary" type="button">Save</button></div>
+                            <form action="" method="put">
+                                <div>
+                                    <div class="div_insurance_name">
+                                        <p class="text_insurance">License Number</p><input name="" class="form-control-sm input_insurance" type="text" placeholder="License Number" value="{{$employee->LicenseNumber}}"></div>
+                                    <div class="div_info_name">
+                                        <p class="text_about">License Contry</p><input name="" class="form-control-sm input_insurance" type="text" placeholder="License Country" value="{{$employee->LicenseCountry}}"></div>
+                                    <div class="div_info_name">
+                                        <p class="text_about">License EXP</p><input name="" class="form-control-sm input_insurance" type="text" placeholder="Year/Month/Day" value="{{$employee->LicenseEXP}}"></div>
+                                </div>
+                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

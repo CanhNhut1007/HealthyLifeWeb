@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Model\AccountModel;
 use App\Model\EmployeeModel;
 use App\Model\PatientModel;
@@ -81,8 +82,36 @@ class GetDataDoctorController extends Controller
 
     function AddHealthRecord($accountid, $accountpatientid)
     {
+        $employeeid = EmployeeModel::where('AccountID', $accountid)->value('EmployeeID');
         $patientname = PatientModel::where('AccountID', $accountpatientid)->value('PatientName');
         $patientid = PatientModel::where('AccountID', $accountpatientid)->value('PatientID');
-        return view('doctor/addhealthrecord', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'patientid'=>$patientid]);
+        return view('doctor/addhealthrecord', ['accountid'=>$accountid, 'employeeid'=>$employeeid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'patientid'=>$patientid]);
+    }
+
+    function SaveHealthRecord(Request $request, $accountid, $accountpatientid)
+    {
+        $healthrecord = new HealthRecordModel;
+        $healthrecord->HealthRecordID = $request->healthrecordid;
+        $healthrecord->HealthRecorDateTime = $request->date;
+        $healthrecord->PatientID = $request->patientid;
+        $healthrecord->EmployeeID = $request->employeeid;
+        $healthrecord->Description = $request->description;
+        $healthrecord->Diagnosis = $request->diagnosis;
+        $healthrecord->Result = $request->result;
+        $healthrecord->Notes = $request->notes;
+        $healthrecord->TotalFee = $request->totalfee;
+        $healthrecord->save();
+        $patientid = PatientModel::where('AccountID', $accountpatientid)->value('PatientID');
+        $healthrecord = HealthRecordModel::where('PatientID', $patientid)->get();
+        $patientname = PatientModel::where('AccountID', $accountpatientid)->value('PatientName');
+        //return view('welcome');
+        return view('doctor/patientrecord', ['accountid'=>$accountid, 'healthrecord'=>$healthrecord, 'patientname'=>$patientname, 'accountpatientid'=>$accountpatientid]);
+    }
+
+    function UpdateProfileAboutDoctor(Request $request, $accountid)
+    {
+        EmployeeModel::where('AccountID', $accountid)->update(['EmployeeName'=>$request->employeename, 'IdentifyCard'=>$request->identifycard, 'Age'=>$request->dateofbirth, 'Gender'=>$request->gender, 'PhoneNumber'=>$request->phonenumber]);
+        $employee = EmployeeModel::where('AccountID', $accountid)->first();
+        return view('doctor/profile', ['accountid'=>$accountid, 'employee'=>$employee]);
     }
 }

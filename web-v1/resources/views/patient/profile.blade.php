@@ -42,63 +42,75 @@
                     <div role="tabpanel" class="tab-pane active" id="tab-1">
                         <div>
                             <p id="text_name_about">About</p>
-                            <div class="div_about">
-                                <div class="div_info_name div_name">
-                                    <p class="text_about">Name</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Name" value="{{$patient->PatientName}}"/></div>
-                                <div class="div_info_name div_name">
-                                    <p class="text_about">Identify Card</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Identify Card" value="{{$patient->IdentifyCard}}"/></div>
-                                <div class="div_info_name div_name">
-                                    <p class="text_about">Date of Birth</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Year/Month/Year" value="{{$patient->Age}}"/></div>
-                                <div>
-                                    <p class="div_info_name text_about">Gender</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Gender" value="{{$patient->Gender}}"/></div>
-                            </div><button class="btn btn-primary" type="button">Save</button></div>
+                            <form action="" method="put">
+                                <div class="div_about">
+                                    <div class="div_info_name div_name">
+                                        <p class="text_about">Name</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Name" value="{{$patient->PatientName}}"/></div>
+                                    <div class="div_info_name div_name">
+                                        <p class="text_about">Identify Card</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Identify Card" value="{{$patient->IdentifyCard}}"/></div>
+                                    <div class="div_info_name div_name">
+                                        <p class="text_about">Date of Birth</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Year/Month/Year" value="{{$patient->Age}}"/></div>
+                                    <div>
+                                        <p class="div_info_name text_about">Gender</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Gender" value="{{$patient->Gender}}"/></div>
+                                </div>
+                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                            </form>
+                        </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="tab-2">
                         <div>
                             <p id="text_name_contact">Contact Infomation</p>
-                            <div>
-                                <div class="div_info_name">
-                                    <p class="text_contact">Email</p><input type="text" class="form-control-sm input_contact" placeholder="Email" value="{{$accountemail}}"/></div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">Phone</p>
-                                    <div><input type="text" class="form-control-sm input_contact" placeholder="Phone number" value="{{$patient->PhoneNumber}}"/></div>
-                                </div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">Address<br /></p>
-                                    <div><input type="text" class="form-control-sm input_contact" placeholder="Address" value="{{$patient->Address}}"/></div>
-                                </div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">City/Province<br /></p>
-                                    <div><input type="text" class="form-control-sm input_contact" placeholder="City" value="{{$patient->City}}"/></div>
-                                </div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">District/<br /></p>
-                                    <div><input type="text" class="form-control-sm input_contact" placeholder="Province" value="{{$patient->District}}"/></div>
-                                </div>
-                                <div class="div_info_name">
-                                    <p id="text_phone" class="text_contact">Country/Region<br /></p>
-                                    <div><input type="text" class="form-control-sm input_contact" placeholder="Country" value="{{$patient->Country}}"/></div>
-                                </div>
+                            <form action="" method="put">
                                 <div>
-                                    <p class="text_address">Emergency contact<br /></p>
-                                    <div><input type="text" class="form-control-sm address input_emergency" placeholder="Name" value="{{$emergencycontact->EmergencyContactName}}"/><input type="text" class="form-control-sm address input_emergency" placeholder="Phone" value="{{$emergencycontact->EmergencyPhoneNumber}}"/><input type="text" class="form-control-sm address input_emergency"
+                                    <div class="div_info_name">
+                                        <p class="text_contact">Email</p><input type="text" class="form-control-sm input_contact" placeholder="Email" value="{{$accountemail}}"/></div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">Phone</p>
+                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Phone number" value="{{$patient->PhoneNumber}}"/></div>
+                                    </div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">Address<br /></p>
+                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Address" value="{{$patient->Address}}"/></div>
+                                    </div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">City/Province<br /></p>
+                                        <div><input type="text" class="form-control-sm input_contact" placeholder="City" value="{{$patient->City}}"/></div>
+                                    </div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">District/<br /></p>
+                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Province" value="{{$patient->District}}"/></div>
+                                    </div>
+                                    <div class="div_info_name">
+                                        <p id="text_phone" class="text_contact">Country/Region<br /></p>
+                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Country" value="{{$patient->Country}}"/></div>
+                                    </div>
+                                    <div>
+                                        <p class="text_address">Emergency contact<br /></p>
+                                        <div><input type="text" class="form-control-sm address input_emergency" placeholder="Name" value="{{$emergencycontact->EmergencyContactName}}"/><input type="text" class="form-control-sm address input_emergency" placeholder="Phone" value="{{$emergencycontact->EmergencyPhoneNumber}}"/><input type="text" class="form-control-sm address input_emergency"
                                             placeholder="Relationship" value="{{$emergencycontact->RelationShip}}"/></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div><button class="btn btn-primary" type="button">Save</button></div>
+                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                            </form>
+                        </div>
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="tab-3">
                         <div>
                             <p id="text_name_insurance">Insurace</p>
-                            <div>
-                                <div class="div_insurance_name">
-                                    <p class="text_insurance">Health Insurance Card Code</p><input type="text" class="form-control-sm input_insurance" placeholder="Card Code" value="{{$healthinsurance->HealthInsuranceCardCode}}"/></div>
-                                <div class="div_info_name">
-                                    <p class="text_insurance">Hospital Register</p><input type="text" class="form-control-sm input_insurance" placeholder="Hopital" value="{{$healthinsurance->HospitalRegister}}"/></div>
-                                <div class="div_insurance_name">
-                                    <p class="text_insurance">Health Insurance MFD<br /></p><input type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceMFD}}"/></div>
-                                <div class="div_insurance_name">
-                                    <p class="text_insurance">Health Insurance EXP<br /></p><input type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceEXP}}"/></div>
-                            </div><button class="btn btn-primary" type="button">Save</button></div>
+                            <form action="" method="put">
+                                <div>
+                                    <div class="div_insurance_name">
+                                        <p class="text_insurance">Health Insurance Card Code</p><input type="text" class="form-control-sm input_insurance" placeholder="Card Code" value="{{$healthinsurance->HealthInsuranceCardCode}}"/></div>
+                                    <div class="div_info_name">
+                                        <p class="text_insurance">Hospital Register</p><input type="text" class="form-control-sm input_insurance" placeholder="Hopital" value="{{$healthinsurance->HospitalRegister}}"/></div>
+                                    <div class="div_insurance_name">
+                                        <p class="text_insurance">Health Insurance MFD<br /></p><input type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceMFD}}"/></div>
+                                    <div class="div_insurance_name">
+                                        <p class="text_insurance">Health Insurance EXP<br /></p><input type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceEXP}}"/></div>
+                                </div>
+                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
