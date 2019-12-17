@@ -25,9 +25,15 @@ Route::get('/welcome',function() {
 
 Route::get('/verify','Auth\VerifyController@ShowVerify')->name('verify');
 
-Route::get('/forgotpassword',function() {
-    return view('forgotpassword');
-});
+// Route::post('/verifyresetpassword','Auth\ForgotPasswordController@resetpassword')
+
+Route::get('/forgotpassword','Auth\ForgotPasswordController@ShowResetPasswordForm')->name('showresetpassword');
+
+Route::post('resetpassword','Auth\ForgotPasswordController@resetpassword')->name('resetpassword');
+
+Route::get('/resetpasswordverify','Auth\ForgotPasswordController@Showverifyresetpassword')->name('resetpasswordverify');
+
+Route::post('verifyresetpassword','Auth\ForgotPasswordController@verifycoderesetpassword')->name('verifyresetpassword');
 
 //Route::post('login','Auth\LoginController@validateLogin');
 Route::post('login','MainController@checklogin');
@@ -43,4 +49,6 @@ Route::get('/signup','Auth\SignupController@ShowSignupForm');
 Route::post('signup','Auth\SignupController@signup');
 
 Route::post('active', 'Auth\VerifyController@activate')->name('active');
+
+
 

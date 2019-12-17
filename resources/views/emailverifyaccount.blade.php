@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Check login</title>
+        <title>Verify account</title>
     </head>
     <body>
         <h4>Hi, </h4>

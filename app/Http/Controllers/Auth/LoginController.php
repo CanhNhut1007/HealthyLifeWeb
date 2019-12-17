@@ -86,11 +86,11 @@ class LoginController extends Controller
                 return view('Account');
             }
             else {
-                return view('login')->with(['errors'=>'The account you are trying to login is not activated or it has been disabled.']);
+                return view('login')->with(['error'=>'The account you are trying to login is not activated or it has been disabled.']);
             }
         } 
         else {
-            return view('login')->with(['errors'=>'Invalid email and password combination. Please try again.']);
+            return view('login')->with(['error'=>'Invalid email and password combination. Please try again.']);
         }
 
     }

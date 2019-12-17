@@ -26,7 +26,7 @@
                 </div>   
             </div>          
         </div>
-        <div class="forgotpassword"><a href="{{URL::asset('forgotpassword')}}">Forgot Password?</a></div>
+        <div class="forgotpassword"><a href="{{route('showresetpassword')}}">Forgot Password?</a></div>
             <div class="Input_Info">
                 <div class="textinput">
                     <div class="label">Password</div>

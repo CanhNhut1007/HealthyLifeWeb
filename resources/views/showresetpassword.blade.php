@@ -4,8 +4,17 @@
 
 <div class="divbutton">
     <h4>Forgot your password?</h4>
-    <p>No worries! Let us know your email and we'll send you a link to reset it.</p>
-    <form method="POST" action="{{('forgotpassword')}}">
+    @if(session()->has('success'))
+        <div class="text-success" role="alert">
+            <p>{{ session('success') }}</p>
+        </div>
+    @elseif(session()->has('error'))
+        <div class='text-danger' role="alert">
+            <p>{{ session('error') }}</p>
+        </div>
+    @endif
+    <p>No worries! Let us know your email and we'll send you a code to reset it.</p>
+    <form method="POST" action="{{route('resetpassword')}}">
         {{csrf_field()}}
 	    <div class="Input_Info">
 			<div class="textinput">

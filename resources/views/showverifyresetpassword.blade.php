@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="text-center content">
-    <h4>Verify your account</h4>
+    <h4>Verify Reset Password</h4>
+    <p>Please enter the code was sent to your email to reset the your password.</p>
     @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
@@ -15,7 +16,7 @@
     <div class="Input_Info">
         <div class="textinput">
             <div class="label">Code</div>
-            <form method="POST" action="{{route('active')}}">
+            <form method="POST" action="{{route('verifyresetpassword')}}">
                 {{csrf_field()}}
                 <input type="hidden" name="email" value="<?php echo session()->get( 'email' ); ?>" />
                 <input type="text" name="codeverify" maxlength="6" value="" required>

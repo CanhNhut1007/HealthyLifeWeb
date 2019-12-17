@@ -14,15 +14,17 @@ class SendMailable extends Mailable
     use SendGrid;
 
     protected $user;
+    public $view;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user,$view)
     {
         $this->user = $user;
+        $this->view = $view;
     }
 
     /**
@@ -35,7 +37,7 @@ class SendMailable extends Mailable
         $address = 'contact@thachcanhnhut.me';
         $subject = '[HealthLife] Please verify your account';
         $name = 'HealthLife';
-        return $this->view('TestLogin') 
+        return $this->view($this->view) 
                     ->from($address, $name)
                     ->subject($subject)
                     ->with('user',['user'=> $this->user]);

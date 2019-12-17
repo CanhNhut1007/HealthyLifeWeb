@@ -78,8 +78,9 @@ class SignupController extends Controller
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-       
-        Mail::to($user->email)->send(new SendMailable($user));
+        $view = 'emailverifyaccount';
+
+        Mail::to($user->email)->send(new SendMailable($user,$view));
         
         return redirect()->route('verify')//,['email'=> $user->email])//,array('email' =>  $user->email,'success' => 'Congratulations! Your account has been made, an email has been sent to your email. Please enter your code in this email message to verify your account and complete registration.'));
                 ->with([ 'email' => $user->email ]) 
