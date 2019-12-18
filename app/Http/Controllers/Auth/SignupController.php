@@ -7,10 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Mail\SendMailable;
-
-use Illuminate\Support\Facades\Mail;
-
+Use App\Jobs\SendEmail;
 
 class SignupController extends Controller
 {
@@ -79,9 +76,9 @@ class SignupController extends Controller
 
         $user = $this->create($request->all());
         $view = 'emailverifyaccount';
+        $subject = '[HealthLife] Please verify your account';
+        $this->dispatch(new SendEmail($user,$view,$subject));
 
-        Mail::to($user->email)->send(new SendMailable($user,$view));
-        
         return redirect()->route('verify')//,['email'=> $user->email])//,array('email' =>  $user->email,'success' => 'Congratulations! Your account has been made, an email has been sent to your email. Please enter your code in this email message to verify your account and complete registration.'));
                 ->with([ 'email' => $user->email ]) 
                 ->with(['success' => 'Congratulations! Your account has been made, an email has been sent to your email. Please enter your code in this email message to verify your account and complete registration.']);

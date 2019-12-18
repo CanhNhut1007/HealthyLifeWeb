@@ -28,12 +28,8 @@ class VerifyController extends Controller
             'email'   => 'required|email',
             'codeverify'  => 'required'
         ]);
-        $verify = array (
-            'email' => $request->get('email'),
-            'codeverify' => $request->get('codeverify')
-        );
-        $user = User::where('email', $verify["email"])
-                    ->where('codeverify', $verify["codeverify"])->first();
+        $user = User::where('email', $request->get('email'))
+                    ->where('codeverify',  $request->get('codeverify'))->first();
         if (empty($user)) {
             return redirect()->to('/')
                 ->with(['error' => 'Your activation code is either expired or invalid.']);

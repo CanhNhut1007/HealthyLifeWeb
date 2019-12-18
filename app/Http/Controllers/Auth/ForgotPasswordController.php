@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+Use App\Jobs\SendEmail;
 
 
 class ForgotPasswordController extends Controller
@@ -48,26 +49,6 @@ class ForgotPasswordController extends Controller
     }
 
     public function resetpassword(Request $request){
-        // $this->validator($request->all())->validate();
-        // $email = $request->get('email');
-        // $active = User::ACTIVE;
-        // if(Auth::attempt(['email'=>$email])){
-            // if(Auth::attempt(['active'=>$active])) {              
-            //     $password_resets = $this->create($request->all());
-            //     $view = 'emailverifyresetpassword';
-            //     Mail::to($password_resets->email)->send(new SendMailable($password_resets,$view));
-
-            //     return redirect()->route('resetpasswordverify')//,['email'=> $user->email])//,array('email' =>  $user->email,'success' => 'Congratulations! Your account has been made, an email has been sent to your email. Please enter your code in this email message to verify your account and complete registration.'));
-            //                     ->with([ 'email' => $password_resets->email ]) 
-            //                     ->with(['success' => "Check your inbox! We've sent a verification code, please enter code and you will be reset password."]);
-            // }
-        //     else {
-        //         return view('showresetpassword')->with(['error'=>'The account you are trying to login is not activated or it has been disabled.']);
-        //     }
-        // } 
-        // else {
-        //     return view('showresetpassword')->with(['error'=>'Invalid email and password combination. Please try again.']);
-        // }
         $this->validate($request, [
             'email'   => 'required|email'
         ]);
@@ -78,14 +59,17 @@ class ForgotPasswordController extends Controller
         if(!empty($user)){
             $password_resets = $this->create($request->all());
             $view = 'emailverifyresetpassword';
-            Mail::to($password_resets->email)->send(new SendMailable($password_resets,$view));
+            $subject = '[HealthLife] Reset your account';
+            $this->dispatch(new SendEmail($password_resets,$view, $subject));
+
+            //Mail::to($password_resets->email)->send(new SendMailable($password_resets,$view));
 
             return redirect()->route('resetpasswordverify')//,['email'=> $user->email])//,array('email' =>  $user->email,'success' => 'Congratulations! Your account has been made, an email has been sent to your email. Please enter your code in this email message to verify your account and complete registration.'));
                             ->with([ 'email' => $password_resets->email ]) 
                             ->with(['success' => "Check your inbox! We've sent a verification code, please enter code and you will be reset password."]);
         }
         else{
-            return back()->with('error', 'Invalid email or your account not active!');
+            return back()->with('error', 'That address either can not be used to reset your password or is not associated with a user account.');
         }
     }
 
@@ -95,12 +79,8 @@ class ForgotPasswordController extends Controller
             'email'   => 'required|email',
             'codeverify'  => 'required'
         ]);
-        $verify = array (
-            'email' => $request->get('email'),
-            'codeverify' => $request->get('codeverify')
-        );
-        $passwordreset = Password_reset::where('email', $verify["email"])
-                    ->where('codeverify', $verify["codeverify"])->first();
+        $passwordreset = Password_reset::where('email', $request->get('email'))
+                    ->where('codeverify', $request->get('codeverify'))->first();
 
         if (empty($passwordreset)) {
             return back()->with(['error' => 'Your code reset password is either expired or invalid.']);
@@ -110,13 +90,15 @@ class ForgotPasswordController extends Controller
         $passwordreset->save();
 
         $new_password = Str::random(6);
-        User::where('email',$verify["email"])
+        User::where('email',$request->get('email'))
             ->update(['password' => Hash::make($new_password)]);
-        $view = 'emailsendnewpassword';
-        $new_user = array ('email' => $verify["email"],
-                            'password'=> $new_password);
 
-        Mail::to($verify["email"])->send(new SendMailable($new_user,$view));
+        $view = "emailsendnewpassword";
+        $new_user = array ('email' => $request->get('email'),
+                            'password'=> $new_password);
+        $subject = '[HealthLife] Your new password from HealthLife';
+        $this->dispatch(new SendEmail($new_user,$view,$subject));
+       // Mail::to($verify["email"])->send(new SendMailable($new_user,$view));
         return redirect()->route("login")
         ->with(['success' => 'Congratulations! Your password is reseted.']);
     }

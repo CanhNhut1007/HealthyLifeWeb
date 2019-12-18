@@ -15,16 +15,18 @@ class SendMailable extends Mailable
 
     protected $user;
     public $view;
+    public $subject;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user,$view)
+    public function __construct($user,$view,$subject)
     {
         $this->user = $user;
         $this->view = $view;
+        $this->subject = $subject;
     }
 
     /**
@@ -35,11 +37,10 @@ class SendMailable extends Mailable
     public function build()
     {
         $address = 'contact@thachcanhnhut.me';
-        $subject = '[HealthLife] Please verify your account';
         $name = 'HealthLife';
         return $this->view($this->view) 
                     ->from($address, $name)
-                    ->subject($subject)
+                    ->subject($this->subject)
                     ->with('user',['user'=> $this->user]);
     }
 }
