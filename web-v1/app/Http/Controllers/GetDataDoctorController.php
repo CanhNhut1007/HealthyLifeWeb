@@ -35,8 +35,10 @@ class GetDataDoctorController extends Controller
         return view('doctor/profile', ['accountid'=>$accountid, 'employee'=>$employee]);
     }
 
-    function DoctorNotification($accountid) 
+    function DoctorNotification($accountid)
     {
+        $employeeid = EmployeeModel::where('AccountID', $accountid)->value('EmployeeID');
+        $patients = PatientModel::join('healthrecord', 'patient.PatientID', '=', 'healthrecord.PatientID')->where('EmployeeID', $employeeid)->get();
         return view('doctor/notification', ['accountid'=>$accountid]);
     }
 
@@ -72,11 +74,11 @@ class GetDataDoctorController extends Controller
         $employeeid = EmployeeModel::where('AccountID', $accountid)->value('EmployeeID');
         if ($employeeid == $healthrecordetail->EmployeeID)
         {
-            return view('doctor/recorddetailedit', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail]);
+            return view('doctor/recorddetailedit', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail, 'healthrecordid'=>$healthrecordid]);
         }
         else
         {
-            return view('doctor/recorddetail', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail]);
+            return view('doctor/recorddetail', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail, 'healthrecordid'=>$healthrecordid]);
         }
     }
 
@@ -90,16 +92,27 @@ class GetDataDoctorController extends Controller
 
     function SaveHealthRecord(Request $request, $accountid, $accountpatientid)
     {
+        $request->validate([
+            'HealthRecordID'=>'required',
+            'HealthRecorDateTime'=>'required|date',
+            'PatientID'=>'required',
+            'EmployeeID'=>'required',
+            'Description'=>'required',
+            'Diagnosis'=>'required',
+            'Result'=>'required',
+            'Notes'=>'required',
+            'TotalFee'=>'required'
+        ]);
         $healthrecord = new HealthRecordModel;
-        $healthrecord->HealthRecordID = $request->healthrecordid;
-        $healthrecord->HealthRecorDateTime = $request->date;
-        $healthrecord->PatientID = $request->patientid;
-        $healthrecord->EmployeeID = $request->employeeid;
-        $healthrecord->Description = $request->description;
-        $healthrecord->Diagnosis = $request->diagnosis;
-        $healthrecord->Result = $request->result;
-        $healthrecord->Notes = $request->notes;
-        $healthrecord->TotalFee = $request->totalfee;
+        $healthrecord->HealthRecordID = $request->HealthRecordID;
+        $healthrecord->HealthRecorDateTime = $request->HealthRecorDateTime;
+        $healthrecord->PatientID = $request->PatientID;
+        $healthrecord->EmployeeID = $request->EmployeeID;
+        $healthrecord->Description = $request->Description;
+        $healthrecord->Diagnosis = $request->Diagnosis;
+        $healthrecord->Result = $request->Result;
+        $healthrecord->Notes = $request->Notes;
+        $healthrecord->TotalFee = $request->TotalFee;
         $healthrecord->save();
         $patientid = PatientModel::where('AccountID', $accountpatientid)->value('PatientID');
         $healthrecord = HealthRecordModel::where('PatientID', $patientid)->get();
@@ -110,8 +123,68 @@ class GetDataDoctorController extends Controller
 
     function UpdateProfileAboutDoctor(Request $request, $accountid)
     {
-        EmployeeModel::where('AccountID', $accountid)->update(['EmployeeName'=>$request->employeename, 'IdentifyCard'=>$request->identifycard, 'Age'=>$request->dateofbirth, 'Gender'=>$request->gender, 'PhoneNumber'=>$request->phonenumber]);
+        EmployeeModel::where('AccountID', $accountid)->update(['EmployeeName'=>$request->employeename, 'IdentifyCard'=>$request->identifycard, 'DayOfBirth'=>$request->dayofbirth, 'Gender'=>$request->gender, 'PhoneNumber'=>$request->phonenumber]);
         $employee = EmployeeModel::where('AccountID', $accountid)->first();
         return view('doctor/profile', ['accountid'=>$accountid, 'employee'=>$employee]);
     }
+
+    public function UpdateDoctorProfile(Request $request, $accountid)
+    {
+        $request->validate([
+            'EmployeeName'=>'required',
+            'IdentifyCard'=>'required',
+            'DayOfBirth'=>'required|date',
+            'Gender'=>'required',
+            'Phonenumber'=>'required',
+            'Degree'=>'required',
+            'Speciality'=>'required',
+            'MedicalSchool'=>'required',
+            'YearOfDegree'=>'required',
+            'LicenseNumber'=>'required',
+            'LicenseCountry'=>'required',
+            'LicenseExp'=>'required|date'
+        ]);
+        EmployeeModel::where('AccountID', $accountid)->update(['EmployeeName'=>$request->EmployeeName, 'IdentifyCard'=>$request->IdentifyCard, 'DayOfBirth'=>$request->DayOfBirth, 'Gender'=>$request->Gender, 'PhoneNumber'=>$request->Phonenumber,
+                                                                'Degree'=>$request->Degree, 'Speciality'=>$request->Speciality, 'MedicalSchool'=>$request->MedicalSchool, 'YearOfDegree'=>$request->YearOfDegree,
+                                                                'LicenseNumber'=>$request->LicenseNumber, 'LicenseCountry'=>$request->LicenseCountry, 'LicenseEXP'=>$request->LicenseExp]);
+        $employee = EmployeeModel::where('AccountID', $accountid)->first();
+        return view('doctor/profile', ['accountid'=>$accountid, 'employee'=>$employee]);
+    }
+
+    public function UpdateDoctorEmail(Request $request, $accountid)
+    {
+        $request->validate([
+            'degree'=>'required',
+            'speciality'=>'required',
+            'medicalschool'=>'required',
+            'yearofdegree'=>'required'
+        ]);
+        EmployeeModel::where('AccountID', $accountid)->update(['Degree'=>$request->degree, 'Speciality'=>$request->speciality, 'MedicalSchool'=>$request->medicalschool, 'YearOfDegree'=>$request->yearofdegree]);
+        $employee = EmployeeModel::where('AccountID', $accountid)->first();
+        return view('doctor/profile', ['accountid'=>$accountid, 'employee'=>$employee]);
+    }
+
+    public function ViewListPatient($accountid)
+    {
+        $employeeid = EmployeeModel::where('AccountID', $accountid)->value('EmployeeID');
+        $patients = HealthRecordModel::join('patient', 'patient.PatientID', '=', 'healthrecord.PatientID')->select('patient.PatientID', 'patient.PatientName', 'patient.IdentifyCard', 'patient.AccountID', 'healthrecord.EmployeeID')->where('EmployeeID', $employeeid)->distinct()->get();
+        return view('doctor/mypatient', ['accountid'=>$accountid, 'patients'=>$patients]);
+    }
+
+    public function UpdateHealthRecord(Request $request, $accountid, $accountpatientid, $healthrecordid)
+    {
+        $request->validate([
+            'Description'=>'required',
+            'Diagnosis'=>'required',
+            'Result'=>'required',
+            'Notes'=>'required',
+            'TotalFee'=>'required'
+        ]);
+        HealthRecordModel::where('HealthRecordID', $healthrecordid)->update(['Description'=>$request->Description, 'Diagnosis'=>$request->Diagnosis, 'Result'=>$request->Result, 'Notes'=>$request->Notes, 'TotalFee'=>$request->TotalFee]);
+        $patientname = PatientModel::where('AccountID', $accountpatientid)->value('PatientName');
+        $healthrecordetail = HealthRecordModel::where('HealthRecordID', $healthrecordid)->first();
+        return view('doctor/recorddetailedit', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail, 'healthrecordid'=>$healthrecordid]);
+    }
+
+
 }

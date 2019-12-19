@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Employee Profile Detail</title>
+    <title>HealthLife Record Detail</title>
     <link rel="stylesheet" href="{{URL::asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('fonts/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/styles.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
 </head>
 
 <body>
@@ -34,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <p id="text_username">Employee: {{$employee->EmployeeName}}</p>
+                        <p id="text_username">Employee: {{$employeename}}</p>
                     </div>
                 </div>
             </div>
@@ -44,28 +43,24 @@
         <div id="content_home"><small class="form-text text-muted name_table" id="text_name_table">Health Record Detail</small>
             <div id="table_last_result">
                 <div class="col-4" id="column_name">
+                    <p class="text_name">Health Record ID<br /></p>
+                    <p class="text_name">Date<br /></p>
                     <p class="text_name">Employee ID<br /></p>
-                    <p class="text_name">Employee Name<br /></p>
-                    <p class="text_name">Gender<br /></p>
-                    <p class="text_name">Age<br /></p>
-                    <p class="text_name">Degree<br /></p>
-                    <p class="text_name">Speciality<br /></p>
-                    <p class="text_name">Medical School<br /></p>
-                    <p class="text_name">Year Of Degree<br /></p>
-                    <p class="text_name">License Country<br /></p>
-                    <p class="text_name">License EXP<br /></p>
+                    <p class="text_name">Description<br /></p>
+                    <p class="text_name">Diagnosis<br /></p>
+                    <p class="text_name">Result<br /></p>
+                    <p class="text_name">Notes<br /></p>
+                    <p class="text_name">TotalFee<br /></p>
                 </div>
                 <div class="col" id="column_detail">
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->EmployeeID}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->EmployeeName}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->Gender}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->DayOfBirth}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->Degree}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->Speciality}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->MedicalSchool}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->YearOfDegree}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->LicenseCountry}}</p>
-                    <p class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$employee->LicenseEXP}}</p>
+                    <p id="text_id_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->HealthRecordID}}</p>
+                    <p id="text_date_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->HealthRecorDateTime}}</p>
+                    <p id="text_doctor_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->EmployeeID}}</p>
+                    <p id="text_description_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Description}}</p>
+                    <p id="text_diagnosis_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Diagnosis}}</p>
+                    <p id="text_result_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Result}}</p>
+                    <p id="text_notes_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Notes}}</p>
+                    <p id="text_totalfee_detal" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->TotalFee}}</p>
                 </div>
             </div>
         </div>

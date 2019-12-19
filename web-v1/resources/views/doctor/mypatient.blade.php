@@ -4,26 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>HealthLife Setting</title>
+    <title>HealthLife Patient</title>
     <link rel="stylesheet" href="{{URL::asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('fonts/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/styles.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#btn_cancel1').click(function() {
-                $('#id_loginemail').val("");
-                $('#id_emailpass').val("");
-            });
-
-            $('#btn_cancel2').click(function() {
-                $('#id_currentpass').val("");
-                $('#id_newpass').val("");
-                $('#id_confirmpass').val("");
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -44,34 +29,29 @@
             </div>
         </div>
     </nav>
-    <div class="content_div">
-        <div id="content_main" class="main_content_div"><small class="form-text text-muted name_table" id="text_name_table">Help &amp; Support</small></div>
-    </div>
-    <div class="features-boxed block_support">
-        <div class="container">
-            <div class="intro">
-                <p class="text-center">If you have any quesion, please contract with us. We will answer in 24h. Thank you!</p>
-            </div>
-            <div class="row justify-content-center features">
-                <div class="col-sm-6 col-md-5 col-lg-4 item">
-                    <div class="box"><i class="fa fa-envelope-o icon"></i>
-                        <h3 class="name">Email</h3>
-                        <p class="description">healthlife.support@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-4 item">
-                    <div class="box"><i class="fa fa-facebook icon"></i>
-                        <h3 class="name">Facebook</h3>
-                        <p class="description">https://facebook.com</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-4 item">
-                    <div class="box"><i class="fa fa-phone icon"></i>
-                        <h3 class="name">Mobile</h3>
-                        <p class="description">+84123456789</p>
-                    </div>
-                </div>
-            </div>
+    <div id="div_name_notification" class="content_div">
+        <div id="content_main" class="main_content_div"><small class="form-text text-muted name_table" id="text_name_table">My Patients</small></div>
+        <div class="main_content_div">
+        <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Patient Name</th>
+                                <th>Identify Card</th>
+                                <th></th>  
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        @foreach ($patients as $patient)
+                            <tr>
+                                <td>{{$patient->PatientID}}</td>
+                                <td>{{$patient->PatientName}}</td>
+                                <td>{{$patient->IdentifyCard}}</td>
+                                <td><a class="nav-link active" href="{{route('doctor-patientrecord', [$accountid, $patient->AccountID])}}">ViewHealthRecord</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>   
+                    </table>
         </div>
     </div>
     <script src="{{URL::asset('js/jquery.min.js')}}"></script>

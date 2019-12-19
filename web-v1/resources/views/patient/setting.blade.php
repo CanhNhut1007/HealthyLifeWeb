@@ -33,7 +33,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('patient-home', $accountid)}}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">My Record</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('patient-myrecord', $accountid)}}">My Record</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('patient-notification', $accountid)}}">Notifications</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('patient-account', $accountid)}}">Account</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="untitled.html"></a>
@@ -69,7 +69,7 @@
                                         <p class="text_setting">Enter password to change your login email<br></p><input class="form-control-sm input_setting" type="password" placeholder="Password" id="id_emailpass"></div>
                                     <div class="button_save_cancel">
                                         <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
-                                        <button class="btn btn-primary btn_cancel" type="button" id="btn_cancel1">Cancel</button>
+                                        <button class="btn btn-primary" type="button" style="margin-top:4%; margin-left:20%;" id="btn_cancel1">Cancel</button>
                                     </div>
                                 </form>
                             </div>
@@ -88,7 +88,7 @@
                                         <p class="text_setting">Confirm new password<br></p><input class="form-control-sm input_setting" type="password" placeholder="Confirm Password" id="id_confirmpass"></div>
                                     <div class="button_save_cancel">
                                         <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
-                                        <button class="btn btn-primary btn_cancel" type="button" id="btn_cancel2">Cancel</button>
+                                        <button class="btn btn-primary" type="button" style="margin-top:4%; margin-left:20%;" id="btn_cancel2">Cancel</button>
                                     </div>                                    
                                 </div>
                             </form>

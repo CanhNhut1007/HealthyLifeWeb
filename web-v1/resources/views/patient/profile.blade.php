@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{URL::asset('fonts/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/styles.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li role="presentation" class="nav-item"><a class="nav-link active" href="{{route('patient-home', $accountid)}}">Home</a></li>
-                    <li role="presentation" class="nav-item"><a class="nav-link" href="#">My Record</a></li>
+                    <li role="presentation" class="nav-item"><a class="nav-link" href="{{route('patient-myrecord', $accountid)}}">My Record</a></li>
                     <li role="presentation" class="nav-item"><a class="nav-link" href="{{route('patient-notification', $accountid)}}">Notifications</a></li>
                     <li role="presentation" class="nav-item"><a class="nav-link" href="{{route('patient-account', $accountid)}}">Account</a></li>
                     <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="untitled.html"></a>
@@ -38,81 +39,85 @@
                     <li class="nav-item"><a role="tab" data-toggle="tab" class="nav-link" href="#tab-2">Contact Information<br /></a></li>
                     <li class="nav-item"><a role="tab" data-toggle="tab" class="nav-link" href="#tab-3">Insurance<br /></a></li>
                 </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="tab-1">
-                        <div>
-                            <p id="text_name_about">About</p>
-                            <form action="" method="put">
+                <form action="{{route('update-patient-profile', $accountid)}}" method="POST">
+                    @csrf()
+                    <div class="tab-content">               
+                        <div role="tabpanel" class="tab-pane active" id="tab-1">
+                            <div>
+                                <p id="text_name_about">About</p>
                                 <div class="div_about">
                                     <div class="div_info_name div_name">
-                                        <p class="text_about">Name</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Name" value="{{$patient->PatientName}}"/></div>
+                                        <p class="text_about">Patient Name</p><input name="PatientName" type="text" class="form-control-sm input_about input_name_card" placeholder="Name" value="{{$patient->PatientName}}"/></div>
                                     <div class="div_info_name div_name">
-                                        <p class="text_about">Identify Card</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Identify Card" value="{{$patient->IdentifyCard}}"/></div>
+                                        <p class="text_about">Identify Card</p><input name="IdentifyCard" type="text" class="form-control-sm input_about input_name_card" placeholder="Identify Card" value="{{$patient->IdentifyCard}}"/></div>
                                     <div class="div_info_name div_name">
-                                        <p class="text_about">Date of Birth</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Year/Month/Year" value="{{$patient->Age}}"/></div>
+                                        <p class="text_about">Day of Birth</p><input name="DayOfBirth" type="text" class="form-control-sm input_about input_name_card" placeholder="Year/Month/Year" value="{{$patient->DayOfBirth}}"/></div>
                                     <div>
-                                        <p class="div_info_name text_about">Gender</p><input type="text" class="form-control-sm input_about input_name_card" placeholder="Gender" value="{{$patient->Gender}}"/></div>
+                                        <p class="div_info_name text_about">Gender</p><input name="Gender" type="text" class="form-control-sm input_about input_name_card" placeholder="Gender" value="{{$patient->Gender}}"/></div>
                                 </div>
-                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tab-2">
-                        <div>
-                            <p id="text_name_contact">Contact Infomation</p>
-                            <form action="" method="put">
+                        <div role="tabpanel" class="tab-pane" id="tab-2">
+                            <div>
+                                <p id="text_name_contact">Contact Infomation</p>
                                 <div>
-                                    <div class="div_info_name">
-                                        <p class="text_contact">Email</p><input type="text" class="form-control-sm input_contact" placeholder="Email" value="{{$accountemail}}"/></div>
+                                    <div class="div_insurance_name div_curent_email">
+                                        <p class="para_current_mail">Email<br></p>
+                                        <p id="text_current_mai_login" class="para_current_mail text_mail_login" placeholder="Login Email">{{$accountemail}}</p>
+                                    </div>
                                     <div class="div_info_name">
                                         <p id="text_phone" class="text_contact">Phone</p>
-                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Phone number" value="{{$patient->PhoneNumber}}"/></div>
+                                        <div><input name="Phone" type="text" class="form-control-sm input_contact" placeholder="Phone number" value="{{$patient->PhoneNumber}}"/></div>
                                     </div>
                                     <div class="div_info_name">
                                         <p id="text_phone" class="text_contact">Address<br /></p>
-                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Address" value="{{$patient->Address}}"/></div>
+                                        <div><input name="Address" type="text" class="form-control-sm input_contact" placeholder="Address" value="{{$patient->Address}}"/></div>
                                     </div>
                                     <div class="div_info_name">
                                         <p id="text_phone" class="text_contact">City/Province<br /></p>
-                                        <div><input type="text" class="form-control-sm input_contact" placeholder="City" value="{{$patient->City}}"/></div>
+                                        <div><input name="City" type="text" class="form-control-sm input_contact" placeholder="City" value="{{$patient->City}}"/></div>
                                     </div>
                                     <div class="div_info_name">
                                         <p id="text_phone" class="text_contact">District/<br /></p>
-                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Province" value="{{$patient->District}}"/></div>
+                                        <div><input name="District" type="text" class="form-control-sm input_contact" placeholder="Province" value="{{$patient->District}}"/></div>
                                     </div>
                                     <div class="div_info_name">
                                         <p id="text_phone" class="text_contact">Country/Region<br /></p>
-                                        <div><input type="text" class="form-control-sm input_contact" placeholder="Country" value="{{$patient->Country}}"/></div>
+                                        <div><input name="Country" type="text" class="form-control-sm input_contact" placeholder="Country" value="{{$patient->Country}}"/></div>
                                     </div>
                                     <div>
                                         <p class="text_address">Emergency contact<br /></p>
-                                        <div><input type="text" class="form-control-sm address input_emergency" placeholder="Name" value="{{$emergencycontact->EmergencyContactName}}"/><input type="text" class="form-control-sm address input_emergency" placeholder="Phone" value="{{$emergencycontact->EmergencyPhoneNumber}}"/><input type="text" class="form-control-sm address input_emergency"
+                                        <div><input name="EmergencyContactName" type="text" class="form-control-sm address input_emergency" placeholder="Name" value="{{$emergencycontact->EmergencyContactName}}"/><input name="EmergencyContactPhone" type="text" class="form-control-sm address input_emergency" placeholder="Phone" value="{{$emergencycontact->EmergencyPhoneNumber}}"/><input name="EmergencyContactRelationship" type="text" class="form-control-sm address input_emergency"
                                             placeholder="Relationship" value="{{$emergencycontact->RelationShip}}"/></div>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tab-3">
-                        <div>
-                            <p id="text_name_insurance">Insurace</p>
-                            <form action="" method="put">
+                        <div role="tabpanel" class="tab-pane" id="tab-3">
+                            <div>
+                                <p id="text_name_insurance">Insurace</p>
                                 <div>
                                     <div class="div_insurance_name">
-                                        <p class="text_insurance">Health Insurance Card Code</p><input type="text" class="form-control-sm input_insurance" placeholder="Card Code" value="{{$healthinsurance->HealthInsuranceCardCode}}"/></div>
+                                        <p class="text_insurance">Health Insurance Card Code</p><input name="HealthInsuranceCode" type="text" class="form-control-sm input_insurance" placeholder="Card Code" value="{{$healthinsurance->HealthInsuranceCardCode}}"/></div>
                                     <div class="div_info_name">
-                                        <p class="text_insurance">Hospital Register</p><input type="text" class="form-control-sm input_insurance" placeholder="Hopital" value="{{$healthinsurance->HospitalRegister}}"/></div>
+                                        <p class="text_insurance">Hospital Register</p><input name="HospitalRegister" type="text" class="form-control-sm input_insurance" placeholder="Hopital" value="{{$healthinsurance->HospitalRegister}}"/></div>
                                     <div class="div_insurance_name">
-                                        <p class="text_insurance">Health Insurance MFD<br /></p><input type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceMFD}}"/></div>
+                                        <p class="text_insurance">Health Insurance MFD<br /></p><input name="HealthInsuranceMfd" type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceMFD}}"/></div>
                                     <div class="div_insurance_name">
-                                        <p class="text_insurance">Health Insurance EXP<br /></p><input type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceEXP}}"/></div>
+                                        <p class="text_insurance">Health Insurance EXP<br /></p><input name="HealthInsuranceExp" type="text" class="form-control-sm input_insurance" placeholder="Year/Month/Day" value="{{$healthinsurance->HealthInsuranceEXP}}"/></div>
                                 </div>
-                                <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%;">Save</button>
-                            </form>
+                            </div>
                         </div>
+                        @if($errors->any())
+                            <div class="alert alert-danger" text-align="right" style="margin-left:5%; margin-right:5%;">
+                            @foreach($errors->all() as $err)
+                                <li>{{$err}}</li>
+                            @endforeach
+                            </div>
+                        @endif
+                        <button class="btn btn-primary" type="submit" style="margin-top:5%; margin-left:40%; margin-bottom:5%;">Save</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

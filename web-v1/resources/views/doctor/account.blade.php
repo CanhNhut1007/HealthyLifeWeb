@@ -17,7 +17,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('doctor-home', $accountid)}}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">List Patient</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('doctor-mypatient', $accountid)}}">My Patients</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('doctor-notification', $accountid)}}">Notifications</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('doctor-account', $accountid)}}">Account</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="untitled.html"></a>

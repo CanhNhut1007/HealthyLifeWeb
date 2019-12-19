@@ -15,7 +15,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('patient-home', $accountid)}}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">My Record</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('patient-myrecord', $accountid)}}">My Record</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('patient-notification', $accountid)}}">Notifications</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('patient-account', $accountid)}}">Account</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="untitled.html"></a>
@@ -72,7 +72,7 @@
                                 <td>{{$user->EmployeeName}}</td>
                                 <td>{{$user->Speciality}}</td>
                                 <td>{{$user->MedicalSchool}}</td>
-                                <td><a class="nav-link active" href="{{route('patient-doctorprofile', [$accountid, $user->AccountID])}}">ViewHealthRecord</a></td>
+                                <td><a class="nav-link active" href="{{route('patient-doctorprofile', [$accountid, $user->AccountID])}}">ViewDoctorProfile</a></td>
                             </tr>
                         @endforeach
                         </tbody>   

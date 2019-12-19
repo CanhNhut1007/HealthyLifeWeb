@@ -32,7 +32,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('doctor-home', $accountid)}}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">List Patient</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('doctor-mypatient', $accountid)}}">My Patients</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('doctor-notification', $accountid)}}">Notifications</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('doctor-account', $accountid)}}">Account</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="untitled.html"></a>
@@ -56,6 +56,13 @@
     </div>
     <div class="content_div">
         <div id="content_home"><small class="form-text text-muted name_table" id="text_name_table">Health Record Detail</small>
+            @if($errors->any())
+                <div class="alert alert-danger" text-align="right" style="margin-left:5%; margin-right:5%;">
+                @foreach($errors->all() as $err)
+                    <li>{{$err}}</li>
+                @endforeach
+                    </div>
+            @endif
             <div id="table_last_result">
                 <div class="col-4" id="column_name">
                     <p class="text_name">Health Record ID<br /></p>
@@ -69,16 +76,17 @@
                     <p class="text_name">TotalFee<br /></p>
                 </div>
                 <div class="col" id="column_detail">
-                    <form action="{{route('doctor-patientrecord1', [$accountid, $accountpatientid])}}" method="post">
-                        <input type="text" class="text_edit_detail_record" id="id_healthrecordid" name="healthrecordid" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_date" name="date" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_patientid" name="patientid" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$patientid}}"><br>
-                        <input type="text" class="text_edit_detail_record" id="id_employeeid" name="employeeid" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$employeeid}}"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_description" name="description" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_diagnosis" name="diagnosis" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_result" name="result" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_notes" name="notes" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
-                        <input type="text" class="text_edit_detail_record" id="id_totalfee" name="totalfee" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                    <form action="{{route('doctor-patientrecord1', [$accountid, $accountpatientid])}}" method="POST">
+                        @csrf()
+                        <input type="text" class="text_edit_detail_record" id="id_healthrecordid" name="HealthRecordID" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_date" name="HealthRecorDateTime" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_patientid" name="PatientID" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$patientid}}"><br>
+                        <input type="text" class="text_edit_detail_record" id="id_employeeid" name="EmployeeID" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$employeeid}}"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_description" name="Description" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_diagnosis" name="Diagnosis" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_result" name="Result" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_notes" name="Notes" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
+                        <input type="text" class="text_edit_detail_record" id="id_totalfee" name="TotalFee" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;"/><br>
                         <div style="display:flex;">
                             <button class="btn btn-primary btn_save" type="submit" style="margin-top:4%; margin-left:0%;">Save</button>
                             <button class="btn btn-primary" type="button" style="margin-top:4%; margin-left:20%;" id="btn_cancel">Cancel</button>

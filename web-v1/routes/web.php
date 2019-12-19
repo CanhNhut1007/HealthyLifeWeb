@@ -29,7 +29,14 @@ Route::get('/patient-home/{accountid}', 'GetDataPatientController@PatientSearch'
 
 Route::any('/patient-home/{accountid}', 'GetDataPatientController@SearchDoctor')->name('patient-home1');
 
-Route::get('/patient-doctorprofile/{accountid}/{accountdoctorid}', 'GetDataPatientController@DoctorProfile')->name('patient-doctorprofile');
+Route::get('/patient-doctorprofile/{accountid}/{accountdoctorid}', 'GetDataPatientController@ViewDoctorProfile')->name('patient-doctorprofile');
+
+Route::post('/patient-profile/{accountid}', 'GetDataPatientController@UpdatePatientProfile')->name('update-patient-profile');
+
+Route::get('/patient-myrecord/{accountid}', 'GetDataPatientController@ViewMyRecord')->name('patient-myrecord');
+
+Route::get('/patient-recorddetail/{accountid}/{healthrecordid}', 'GetDataPatientController@MyRecordDetail')->name('patient-recorddetail');
+
 
 //Doctor route
 
@@ -55,4 +62,15 @@ Route::get('/doctor-addhealthrecord/{accountid}/{accountpatientid}', 'GetDataDoc
 
 Route::post('/doctor-patientrecord/{accountid}/{accountpatientid}', 'GetDataDoctorController@SaveHealthRecord')->name('doctor-patientrecord1');
 
-Route::any('/doctor-profile-update-about/{accountid}', 'GetDataDoctorController@UpdateProfileAboutDoctor')->name('doctor-profile1');
+Route::post('/doctor-profile/{accountid}', 'GetDataDoctorController@UpdateDoctorProfile')->name('update-doctor-profile');
+
+Route::post('/doctor-setting/{accountid}', 'GetDataDoctorController@DoctorSetting')->name('update-email');
+
+Route::get('/doctor-mypatient/{accountid}', 'GetDataDoctorController@ViewListPatient')->name('doctor-mypatient');
+
+Route::post('/doctor-recorddetail/{accountid}/{accountpatientid}/{healthrecordid}', 'GetDataDoctorController@UpdateHealthRecord')->name('doctor-recorddetail1');
+
+//Route::post('/doctor-profile-update-educational/{accountid}', 'GetDataDoctorController@UpdateDoctorEducational')->name('update-educational');
+
+//Route::post('/doctor-profile-update-license/{accountid}', 'GetDataDoctorController@UpdateDoctorLicense')->name('update-license');
+

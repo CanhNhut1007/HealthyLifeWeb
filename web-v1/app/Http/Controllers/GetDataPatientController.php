@@ -41,8 +41,8 @@ class GetDataPatientController extends Controller
     {
         return view('patient/notification', ['accountid'=>$accountid]);
     }
-/////////////////////////////
-    function DoctorProfile($accountid, $accountdoctorid)
+
+    function ViewDoctorProfile($accountid, $accountdoctorid)
     {
         $employee = EmployeeModel::where('AccountID', $accountdoctorid)->first();
         return view('patient/doctorprofile', ['accountid'=>$accountid, 'employee'=>$employee, 'accountdoctorid'=>$accountdoctorid]);
@@ -63,5 +63,52 @@ class GetDataPatientController extends Controller
             return view('patient/home', ['accountid'=>$accountid, 'employee'=>$employee, 'patientname'=>$patientname]);
         else
             return view ('patient/home')->withMessage ( 'No Result found. Try to search again !' );
+    }
+
+    public function UpdatePatientProfile(Request $request, $accountid)
+    {
+        $request->validate([
+            'PatientName'=>'required',
+            'IdentifyCard'=>'required',
+            'DayOfBirth'=>'required|date',
+            'Gender'=>'required',
+            'Phone'=>'required',
+            'Address'=>'required',
+            'City'=>'required',
+            'District'=>'required',
+            'Country'=>'required',
+            'EmergencyContactName'=>'required',
+            'EmergencyContactPhone'=>'required',
+            'EmergencyContactRelationship'=>'required',
+            'HealthInsuranceCode'=>'required',
+            'HospitalRegister'=>'required',
+            'HealthInsuranceMfd'=>'required|date',
+            'HealthInsuranceExp'=>'required|date'
+        ]);
+        $patient = PatientModel::where('AccountID', $accountid)->first();
+        PatientModel::where('AccountID', $accountid)->update(['PatientName'=>$request->PatientName, 'IdentifyCard'=>$request->IdentifyCard, 'DayOfBirth'=>$request->DayOfBirth, 'Gender'=>$request->Gender, 
+                                                        'PhoneNumber'=>$request->Phone, 'Address'=>$request->Address, 'City'=>$request->City, 'District'=>$request->District, 'Country'=>$request->Country]);
+        EmergencyContactModel::where('PatientID', $patient->PatientID)->update(['EmergencyContactName'=>$request->EmergencyContactName, 'EmergencyPhoneNumber'=>$request->EmergencyContactPhone, 'RelationShip'=>$request->EmergencyContactRelationship]);
+        HealthInsuranceModel::where('PatientID', $patient->PatientID)->update(['HealthInsuranceCardCode'=>$request->HealthInsuranceCode, 'HospitalRegister'=>$request->HospitalRegister, 'HealthInsuranceMFD'=>$request->HealthInsuranceMfd, 'HealthInsuranceEXP'=>$request->HealthInsuranceExp]);
+        $patient = PatientModel::where('AccountID', $accountid)->first();
+        $emergencycontact = EmergencyContactModel::where('PatientID', $patient->PatientID)->first();
+        $healthinsurance = HealthInsuranceModel::where('PatientID', $patient->PatientID)->first();
+        $accountemail = AccountModel::where('AccountID', $accountid)->value('AccountEmail');
+        return view('patient/profile', ['accountid'=>$accountid, 'accountemail'=>$accountemail, 'patient'=>$patient, 'emergencycontact'=>$emergencycontact, 'healthinsurance'=>$healthinsurance]);
+    }
+
+    public function ViewMyRecord($accountid)
+    {
+        $patientid = PatientModel::where('AccountID', $accountid)->value('PatientID');
+        $healthrecord = HealthRecordModel::where('PatientID', $patientid)->get();
+        return view('patient/myrecord', ['accountid'=>$accountid, 'healthrecord'=>$healthrecord]);
+    }
+
+    public function MyRecordDetail($accountid, $healthrecordid)
+    {
+        $healthrecordetail = HealthRecordModel::where('HealthRecordID', $healthrecordid)->first();
+        $employeeid = HealthRecordModel::where('HealthRecordID', $healthrecordid)->value('EmployeeID');
+        $employeename = EmployeeModel::where('EmployeeID', $employeeid)->value('EmployeeName');
+        return view('patient/myrecorddetail', ['accountid'=>$accountid, 'healthrecordetail'=>$healthrecordetail, 'employeename'=>$employeename]);
     }
 }
