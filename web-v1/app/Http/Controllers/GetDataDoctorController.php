@@ -178,9 +178,10 @@ class GetDataDoctorController extends Controller
             'Diagnosis'=>'required',
             'Result'=>'required',
             'Notes'=>'required',
+            'PatientView'=>'required',
             'TotalFee'=>'required'
         ]);
-        HealthRecordModel::where('HealthRecordID', $healthrecordid)->update(['Description'=>$request->Description, 'Diagnosis'=>$request->Diagnosis, 'Result'=>$request->Result, 'Notes'=>$request->Notes, 'TotalFee'=>$request->TotalFee]);
+        HealthRecordModel::where('HealthRecordID', $healthrecordid)->update(['Description'=>$request->Description, 'Diagnosis'=>$request->Diagnosis, 'Result'=>$request->Result, 'Notes'=>$request->Notes, 'PatientView'=>$request->PatientView, 'TotalFee'=>$request->TotalFee]);
         $patientname = PatientModel::where('AccountID', $accountpatientid)->value('PatientName');
         $healthrecordetail = HealthRecordModel::where('HealthRecordID', $healthrecordid)->first();
         return view('doctor/recorddetailedit', ['accountid'=>$accountid, 'accountpatientid'=>$accountpatientid, 'patientname'=>$patientname, 'healthrecordetail'=>$healthrecordetail, 'healthrecordid'=>$healthrecordid]);

@@ -51,6 +51,7 @@
                     <p class="text_name">Diagnosis<br /></p>
                     <p class="text_name">Result<br /></p>
                     <p class="text_name">Notes<br /></p>
+                    <p class="text_name">Patient View<br /></p>
                     <p class="text_name">TotalFee<br /></p>
                 </div>
                 <div class="col" id="column_detail">
@@ -61,6 +62,7 @@
                     <p id="text_diagnosis_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Diagnosis}}</p>
                     <p id="text_result_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Result}}</p>
                     <p id="text_notes_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->Notes}}</p>
+                    <p id="text_notes_detail" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->PatientView}}</p>
                     <p id="text_totalfee_detal" class="text_detail" style="border:none; width:100%; border-radius:20px; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;">{{$healthrecordetail->TotalFee}}</p>
                 </div>
             </div>

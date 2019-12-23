@@ -60,6 +60,7 @@
                         <p class="text_name">Diagnosis<br /></p>
                         <p class="text_name">Result<br /></p>
                         <p class="text_name">Notes<br /></p>
+                        <p class="text_name">Patient View<br /></p>
                         <p class="text_name">TotalFee<br /></p>
                     </div>
                     <div class="col" id="column_detail">
@@ -70,6 +71,7 @@
                         <input name="Diagnosis" type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Diagnosis}}"/><br>
                         <input name="Result" type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Result}}"/><br>
                         <input name="Notes" type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->Notes}}"/><br>
+                        <input name="PatientView" type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->PatientView}}"/><br>
                         <input name="TotalFee" type="text" class="text_edit_detail_record" style="border:none; width:100%; border-radius:20px; margin-bottom:2.1%; font-size:18px; background-color:#ffffff; padding-left:5%; text-align:center;" value="{{$healthrecordetail->TotalFee}}"/><br>
                     </div>
                 </div>

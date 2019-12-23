@@ -100,7 +100,7 @@ class GetDataPatientController extends Controller
     public function ViewMyRecord($accountid)
     {
         $patientid = PatientModel::where('AccountID', $accountid)->value('PatientID');
-        $healthrecord = HealthRecordModel::where('PatientID', $patientid)->get();
+        $healthrecord = HealthRecordModel::where(['PatientID'=>$patientid, 'PatientView'=>"Yes"])->get();
         return view('patient/myrecord', ['accountid'=>$accountid, 'healthrecord'=>$healthrecord]);
     }
 
